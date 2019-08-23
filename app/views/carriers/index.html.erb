@@ -4,6 +4,12 @@
 
 <h1>Carriers</h1>
 
+<%= form_with(model: @carrier, method: "get") do %>
+  <%= label_tag(:q, "Search for carrier:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <ul>
   <% @carriers.each do |carrier| %>
     <li>
