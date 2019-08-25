@@ -85,4 +85,8 @@ RSpec.describe 'Carrier' do
     expect(page).to have_content('Name can\'t be blank')
     expect(page).to have_content('Item can\'t be blank')
   end
+
+  scenario 'search for carrier by name' do
+  end
+
 end

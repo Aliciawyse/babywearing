@@ -3,6 +3,7 @@ class CarriersController < ApplicationController
 
   def index
     @carriers = Carrier.all.with_attached_photos
+    @carriers = @carriers.starts_with(params[:starts_with]) if params[:starts_with].present?
   end
 
   def show

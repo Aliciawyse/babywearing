@@ -14,6 +14,8 @@ class Carrier < ApplicationRecord
 
   has_many_attached :photos
 
+  scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+
   def build_loan(attributes = {})
     loans.create({
       due_date: Date.today + default_loan_length_days.days,
