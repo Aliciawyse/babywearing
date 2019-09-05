@@ -2,8 +2,13 @@ class CarriersController < ApplicationController
   before_action :set_carrier, only: [:show, :edit, :update]
 
   def index
-    @carriers = Carrier.all.with_attached_photos
-    @carriers = @carriers.starts_with(params[:starts_with]) if params[:starts_with].present?
+    # @carriers = @carriers.starts_with(params[:starts_with]) if params[:starts_with].present?
+    # @carriers = Carrier.all.with_attached_photos
+    if params[:starts_with].present?
+      @carriers = @carriers.starts_with(params[:starts_with])
+    else
+      @carriers = Carrier.all.with_attached_photos
+    end
   end
 
   def show
@@ -60,6 +65,7 @@ class CarriersController < ApplicationController
 
   def carrier_params
     params.require(:carrier).permit(
+      :search,
       :name,
       :item_id,
       :manufacturer,

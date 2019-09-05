@@ -4,9 +4,9 @@
 
 <h1>Carriers</h1>
 
-<%= form_with(model: @carrier, method: "get") do %>
-  <%= label_tag(:q, "Search for carrier:") %>
-  <%= text_field_tag(:q) %>
+<%= form_tag(carriers_path, method: :get) do %>
+  <%= label_tag(:q, "Filter by name, manufacturer or model") %>
+  <%= text_field_tag(:q, params[:starts_with]) %>
   <%= submit_tag("Search") %>
 <% end %>
 

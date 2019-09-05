@@ -14,7 +14,7 @@ class Carrier < ApplicationRecord
 
   has_many_attached :photos
 
-  scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+  scope :starts_with, -> (name) { where("name ilike ?", "#{name}%")}
 
   def build_loan(attributes = {})
     loans.create({
