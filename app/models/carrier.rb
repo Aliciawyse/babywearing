@@ -3,6 +3,14 @@ class Carrier < ApplicationRecord
   has_many :loans
   belongs_to :category
 
+  include Filterable
+
+  # scope :starts_with, -> (name) { where("name ilike ?", "%#{name}%")}
+  # scope :manufacturer, -> (manufacturer) { where(manufacturer: manufacturer) }
+  # scope :model, -> (model) { where(model: model) }
+  
+  scope :location, -> (location_id) { where location_id: location_id }
+
   validates :item_id, uniqueness: { message: 'Item ID has already been taken' }
   validates_presence_of [
     :name,
@@ -13,8 +21,6 @@ class Carrier < ApplicationRecord
   ]
 
   has_many_attached :photos
-
-  scope :starts_with, -> (name) { where("name ilike ?", "#{name}%")}
 
   def build_loan(attributes = {})
     loans.create({

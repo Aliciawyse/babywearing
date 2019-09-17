@@ -2,13 +2,11 @@ class CarriersController < ApplicationController
   before_action :set_carrier, only: [:show, :edit, :update]
 
   def index
-    # @carriers = @carriers.starts_with(params[:starts_with]) if params[:starts_with].present?
+    # binding.pry
+    @location_name = filter_params[:location]
+    @carriers = Carrier.all.with_attached_photos.class_filter(filter_params)
+
     # @carriers = Carrier.all.with_attached_photos
-    if params[:starts_with].present?
-      @carriers = @carriers.starts_with(params[:starts_with])
-    else
-      @carriers = Carrier.all.with_attached_photos
-    end
   end
 
   def show
@@ -77,5 +75,10 @@ class CarriersController < ApplicationController
       :default_loan_length_days,
       photos: []
     )
+  end
+
+  def filter_params
+    return {} unless params.key?(:filters)
+    params.require(:filters).slice(:starts_with)
   end
 end

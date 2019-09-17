@@ -4,10 +4,11 @@
 
 <h1>Carriers</h1>
 
-<%= form_tag(carriers_path, method: :get) do %>
-  <%= label_tag(:q, "Filter by name, manufacturer or model") %>
-  <%= text_field_tag(:q, params[:starts_with]) %>
-  <%= submit_tag("Search") %>
+<% if @carriers.present? %>
+  <div>
+    <%= label_tag "by Location" %>
+      <%= select_tag "filters[location]", options_for_select(@carriers, @location_name), { include_blank: true, class: "form-control" } %>
+  </div>
 <% end %>
 
 <ul>
