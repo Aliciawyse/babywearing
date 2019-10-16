@@ -1,8 +1,7 @@
-RSpec.describe Carrier do
-  fixtures :locations
-  let(:location) { locations(:location) }
+# frozen_string_literal: true
 
-  fixtures :categories
+RSpec.describe Carrier do
+  let(:location) { locations(:location) }
   let(:category) { categories(:category) }
 
   it 'is valid with valid attributes' do

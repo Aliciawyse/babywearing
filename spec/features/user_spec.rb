@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "User" do
-
-  fixtures :users
   let(:user) { users(:user) }
 
   scenario "should allow user who is an admin to see list of users" do
@@ -44,7 +44,17 @@ RSpec.describe "User" do
     expect(header).to match "attachment; filename=\"users-#{Date.today}.csv\""
   end
 
+  scenario "user should be able to log out" do
+    sign_in user
+    visit root_url
+    find('.user-dropdown').click
+    click_on "Logout"
+    expect(page).to have_content "Log in"
+  end
+
   scenario "should send the user a welcome email" do
+    Devise.mailer.deliveries = []
+
     user = User.create(
       email: "alicia@test.com",
       password: "123abc",
@@ -53,12 +63,13 @@ RSpec.describe "User" do
       city: "Atlanta",
       state: "GA",
       postal_code: "30030",
-      phone_number: "909-851-9806")
+      phone_number: "909-851-9806"
+    )
 
-      aggregate_failures "testing welcome email" do
-        expect(Devise.mailer.deliveries.count).to eq 1
-        expect(Devise.mailer.deliveries.first.subject).to eq "Babywearing Account Registration"
-        expect(Devise.mailer.deliveries.first.to).to include("alicia@test.com")
-      end
+    aggregate_failures "testing welcome email" do
+      expect(Devise.mailer.deliveries.count).to eq 1
+      expect(Devise.mailer.deliveries.first.subject).to eq "Babywearing Account Registration"
+      expect(Devise.mailer.deliveries.first.to).to include(user.email)
+    end
   end
 end

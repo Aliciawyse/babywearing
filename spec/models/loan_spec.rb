@@ -1,6 +1,6 @@
-RSpec.describe Loan do
-  fixtures(:carriers, :users)
+# frozen_string_literal: true
 
+RSpec.describe Loan do
   let(:member)    { users(:user) }
   let(:volunteer) { users(:volunteer) }
 

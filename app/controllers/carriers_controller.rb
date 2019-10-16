@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class CarriersController < ApplicationController
   before_action :set_carrier, only: [:show, :edit, :update]
 
   def index
-    # binding.pry
-    @location_name = filter_params[:location]
-    @carriers = Carrier.all.with_attached_photos.class_filter(filter_params)
-
-    # @carriers = Carrier.all.with_attached_photos
+    @carriers = Carrier
+                .with_attached_photos
+                .includes(:location)
+                .all
   end
 
   def show

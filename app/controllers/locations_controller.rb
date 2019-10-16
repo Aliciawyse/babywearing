@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LocationsController < ApplicationController
 
   before_action :set_location, only: [:show, :edit, :update]
@@ -37,7 +39,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:name, :organization_id)
+    params.require(:location).permit(:name)
   end
 
   def set_location

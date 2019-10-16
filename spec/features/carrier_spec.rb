@@ -1,11 +1,9 @@
+# frozen_string_literal: true
+
 RSpec.describe 'Carrier' do
-  fixtures :categories
   let(:category) { categories(:category) }
-  fixtures :locations
   let(:location) { locations(:location) }
-  fixtures :carriers
   let(:carrier) { carriers(:carrier) }
-  fixtures :users
   let(:user) { users(:user) }
 
   before do
@@ -89,4 +87,16 @@ RSpec.describe 'Carrier' do
   scenario 'search for carrier by name' do
   end
 
+  scenario 'ADD new carrier' do
+    click_on 'ADD ITEM'
+
+    expect(page).to have_content('New Carrier')
+    expect(page).to have_content('Name')
+    expect(page).to have_content('Item')
+    expect(page).to have_content('Manufacturer')
+    expect(page).to have_content('Model')
+    expect(page).to have_content('Color')
+
+    expect(current_path).to eq '/carriers/new'
+  end
 end

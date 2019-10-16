@@ -1,3 +1,9 @@
+# README
+
+[![Build Status](https://travis-ci.org/rubyforgood/babywearing.svg?branch=master)](https://travis-ci.org/rubyforgood/babywearing)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ac4e12c6fda4398c9dd2/maintainability)](https://codeclimate.com/github/rubyforgood/babywearing/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ac4e12c6fda4398c9dd2/test_coverage)](https://codeclimate.com/github/rubyforgood/babywearing/test_coverage)
+
 # Babywearing
 
 The [Mid-Atlantic Babywearing](https://midatlanticbabywearing.org) organization
@@ -31,38 +37,38 @@ effective and provides the same capabilities as their existing system with an
 emphasis on tailoring the experience to better suit the needs of this
 organization. The primary set of features this project will focus on includes:
 
-* Managing inventory of hundreds of carriers across multiple locations
+- Managing inventory of hundreds of carriers across multiple locations
 
-* Allowing Members to create or update their account information
+- Allowing Members to create or update their account information
 
-* Using volunteers to check in and check out carriers from inventory
+- Using volunteers to check in and check out carriers from inventory
 
-* Recording (not processing) financial transactions such as late fees and
+- Recording (not processing) financial transactions such as late fees and
   membership dues
 
-  * Simplifying the process to waive late fees
+  - Simplifying the process to waive late fees
 
-* Improved notification of activities to members including:
+- Improved notification of activities to members including:
 
-  * Due date reminders for checked out items
+  - Due date reminders for checked out items
 
-  * Updates or changes to events and item due dates
+  - Updates or changes to events and item due dates
 
-* Signing agreements and waivers to participate in the organization
+- Signing agreements and waivers to participate in the organization
 
 Some additional stretch goals include:
 
-* Transferring inventory between locations (and tracking that history)
+- Transferring inventory between locations (and tracking that history)
 
-* Event attendance sign in
+- Event attendance sign in
 
-  * Fast sign in for existing Members
+  - Fast sign in for existing Members
 
-  * Easy transition to create new accounts for new Members
+  - Easy transition to create new accounts for new Members
 
-* Assign location preferences to Members
+- Assign location preferences to Members
 
-* Opt-in text message for meeting and check out reminders using Twilio
+- Opt-in text message for meeting and check out reminders using Twilio
 
 ### Technical considerations
 
@@ -72,6 +78,36 @@ process transactions. This project needs to consider a mobile-first design to
 continue to provide the users the flexibility of working remote without having
 to carry a laptop. Some events are also more of an ad-hoc popup so a phone could be the only
 device available in those moments.
+
+## Development
+
+### Ruby Version
+
+This app uses Ruby version 2.6.3, Rails version 5.2.3, and PostgreSQL 11.4
+
+### Setup
+
+- Clone the repo
+- run `bin/setup`
+
+### Install ImageMagick
+
+ImageMagick is needed for the pages with images of carriers
+run `brew install imagemagick`
+
+### Maintainability
+
+We're currently using Code Climate for code assessment. You can see the current settings in `.codeclimate.yml` and can read more about their Maintainability checks [here](https://docs.codeclimate.com/docs/maintainability).
+
+### Run tests
+
+Run `rspec` to run all tests
+or
+Run `rspec path/to/spec.rb` to run a specific file
+
+### Start the app
+
+Run `rails s` and browse to http://localhost:3000/
 
 ## How to Contribute
 

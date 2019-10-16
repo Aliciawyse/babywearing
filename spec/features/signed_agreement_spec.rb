@@ -1,7 +1,6 @@
-RSpec.describe SignedAgreement do
-  fixtures :users
-  fixtures :agreements
+# frozen_string_literal: true
 
+RSpec.describe SignedAgreement do
   let(:user) { users(:user) }
   let(:agreement) { agreements(:agreement) }
 
