@@ -5,10 +5,14 @@
 <h1>Carriers</h1>
 
 <% if @carriers.present? %>
+
+<%= form_with(url: "/carriers/search", method: "post") do %>
   <div>
     <%= label_tag "by Location" %>
-      <%= select_tag "filters[location]", options_for_select(@carriers, @location_name), { include_blank: true, class: "form-control" } %>
+      <%= select_tag "location_id", options_for_select(@locations.map{|item| [item.name, item.id]}), { include_blank: true, class: "form-control" } %>
   </div>
+  <%= submit_tag("Search") %>
+<% end %>
 <% end %>
 
 <% @carriers.each_slice(4) do |carriers| %>

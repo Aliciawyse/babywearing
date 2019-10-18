@@ -8,6 +8,19 @@ class CarriersController < ApplicationController
                 .with_attached_photos
                 .includes(:location)
                 .all
+
+    @locations = Location.all
+  end
+
+  def search
+    #  I have a location id in this search params so I can update Carreiers....
+    # puts params
+    # puts @carriers
+    # puts Carrier.where(location_id: params["location_id"])
+    @locations = Location.all
+    @carriers = Carrier.where(location_id: params["location_id"])
+    # puts @carriers
+    render "index", locals: {carriers: @carriers}
   end
 
   def show

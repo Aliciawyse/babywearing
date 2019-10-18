@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   resources :locations
   resources :membership_types
   resources :users, only: [:index]
-  resources :carriers
+  resources :carriers do
+    collection do
+      post "search", to: "carriers#search"
+    end
+  end
   resources :photos, only: :destroy
   devise_for :users, controllers: { registrations: "users/registrations" }
   get 'home/index'
+
 
   resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
