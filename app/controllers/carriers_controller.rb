@@ -11,6 +11,12 @@ class CarriersController < ApplicationController
     @locations = Location.all
   end
 
+  def search
+    @locations = Location.all
+    @carriers = Carrier.where(location_id: params["location_id"])
+    render :index
+  end
+
   def show
   end
 
