@@ -89,12 +89,9 @@ RSpec.describe 'Carrier' do
     expect(page).to have_content('Item can\'t be blank')
   end
 
-<<<<<<< HEAD
   scenario 'search for carrier by name' do
   end
 
-=======
->>>>>>> master
   scenario 'ADD new carrier' do
     click_on 'ADD ITEM'
 
