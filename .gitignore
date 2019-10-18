@@ -31,4 +31,11 @@
 db/.DS_Store
 /spec/examples.txt
 
+<<<<<<< HEAD
 .idea/
+=======
+.idea/
+
+# Ignore coverage files from simplecov
+/coverage
+>>>>>>> master

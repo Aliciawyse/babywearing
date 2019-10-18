@@ -6,21 +6,9 @@ class CarriersController < ApplicationController
   def index
     @carriers = Carrier
                 .with_attached_photos
-                .includes(:location)
+                .includes(:home_location)
                 .all
-
     @locations = Location.all
-  end
-
-  def search
-    #  I have a location id in this search params so I can update Carreiers....
-    # puts params
-    # puts @carriers
-    # puts Carrier.where(location_id: params["location_id"])
-    @locations = Location.all
-    @carriers = Carrier.where(location_id: params["location_id"])
-    # puts @carriers
-    render "index", locals: {carriers: @carriers}
   end
 
   def show
@@ -84,7 +72,8 @@ class CarriersController < ApplicationController
       :model,
       :color,
       :size,
-      :location_id,
+      :home_location_id,
+      :current_location_id,
       :category_id,
       :default_loan_length_days,
       photos: []
